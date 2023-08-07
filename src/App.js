@@ -1,14 +1,8 @@
-import { useState } from "react";
-function App() {
-  const [formulario, setFormulario] = useState({ name: "" });
-  const handleChange = (e) => {
-    setFormulario({
-      ...formulario,
-      [e.target.name]: e.target.value,
-    });
+import useFormulario from "./hooks/useFormulario";
 
-    console.log(e);
-  };
+function App() {
+  const [formulario, handleChange] = useFormulario({ name: "" });
+
   console.log(formulario);
   return (
     <form>
