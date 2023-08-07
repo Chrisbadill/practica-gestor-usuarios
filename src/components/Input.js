@@ -1,6 +1,7 @@
+import "./Input.css";
 const Input = ({ label, ...rest }) => {
   return (
-    <div>
+    <div className="field">
       <label> {label} </label>
       <input {...rest} />
     </div>
