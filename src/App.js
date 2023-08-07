@@ -1,4 +1,5 @@
 import useFormulario from "./hooks/useFormulario";
+import Input from "./components/Input";
 
 function App() {
   const [formulario, handleChange] = useFormulario({ name: "" });
@@ -6,7 +7,8 @@ function App() {
   console.log(formulario);
   return (
     <form>
-      <input
+      <Input
+        label="Nombre"
         name="name"
         placeholder="Nombre"
         value={formulario.name}
