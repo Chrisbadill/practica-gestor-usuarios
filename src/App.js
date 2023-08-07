@@ -50,6 +50,11 @@ function App() {
           </form>
         </div>
       </Card>
+      <ul>
+        {usuarios.map((x) => (
+          <li key={x.email}>{`${x.name} ${x.lastname}: ${x.email}`}</li>
+        ))}
+      </ul>
     </Container>
   );
 }
