@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useFormulario from "./hooks/useFormulario";
 import Input from "./components/Input";
 import Card from "./components/Card";
@@ -5,14 +6,25 @@ import Container from "./components/Container";
 import Button from "./components/Button";
 
 function App() {
-  const [formulario, handleChange] = useFormulario({ name: "", lastname: "" });
+  const [usuarios, setUsuarios] = useState([]);
+  const [formulario, handleChange, reset] = useFormulario({
+    name: "",
+    email: "",
+    lastname: "",
+  });
 
-  console.log(formulario);
+  const submit = (e) => {
+    e.preventDefault();
+    setUsuarios([...usuarios, formulario]);
+    reset();
+  };
+
+  console.log(formulario, usuarios);
   return (
     <Container>
       <Card>
         <div style={{ padding: 20 }}>
-          <form>
+          <form onSubmit={submit}>
             <Input
               label="Nombre"
               name="name"
@@ -25,6 +37,13 @@ function App() {
               name="lastname"
               placeholder="Apellido"
               value={formulario.lastname}
+              onChange={handleChange}
+            />
+            <Input
+              label="Correo"
+              name="email"
+              placeholder="Correo"
+              value={formulario.email}
               onChange={handleChange}
             />
             <Button>Enviar</Button>
